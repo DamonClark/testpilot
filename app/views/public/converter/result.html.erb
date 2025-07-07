@@ -1,0 +1,45 @@
+<div class="min-h-screen bg-white flex items-center justify-center px-4">
+  <div class="max-w-2xl w-full space-y-6">
+    <h1 class="text-2xl font-bold text-slate-700">Generated RSpec Code</h1>
+
+    <% if @generated_code.present? %>
+      <div class="relative">
+        <pre class="bg-slate-100 p-4 rounded-lg shadow whitespace-pre-wrap font-mono text-sm text-slate-800"><%= @generated_code.html_safe %></pre>
+
+        <!-- Hidden textarea to support clipboard copy -->
+        <textarea id="copy-target" class="hidden"><%= @generated_code %></textarea>
+
+        <button
+          onclick="copyGeneratedCode()"
+          class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded hover:bg-blue-600">
+          📋 Copy
+        </button>
+      </div>
+
+      <script>
+        function copyGeneratedCode() {
+          const textarea = document.getElementById("copy-target");
+          textarea.classList.remove("hidden");
+          textarea.select();
+          document.execCommand("copy");
+          textarea.classList.add("hidden");
+        }
+      </script>
+    <% else %>
+      <p class="text-red-500">⚠️ No generated code found.</p>
+    <% end %>
+
+    <%= link_to "← Back to Converter", converter_path, class: "inline-block text-blue-600 hover:underline text-sm font-medium" %>
+  </div>
+</div>
+
+<script>
+  function copyToClipboard() {
+    const code = document.getElementById("generated-code").innerText;
+    navigator.clipboard.writeText(code).then(function() {
+      alert("Copied to clipboard!");
+    }, function(err) {
+      alert("Failed to copy text: " + err);
+    });
+  }
+</script>
