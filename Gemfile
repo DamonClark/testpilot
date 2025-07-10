@@ -160,7 +160,7 @@ gem "rack-cors"
 # Easy and automatic inline CSS for mailers
 gem "premailer-rails"
 
-gem 'ruby-openai', '~> 8.1'
+gem "ruby-openai", "~> 8.1"
 
 group :development do
   # Open any sent emails in your browser instead of having to setup an SMTP trap.

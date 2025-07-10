@@ -16,8 +16,8 @@ class Public::TestsController < Public::ApplicationController
       parameters: {
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "You are an expert test automation engineer." },
-          { role: "user", content: prompt }
+          {role: "system", content: "You are an expert test automation engineer."},
+          {role: "user", content: prompt}
         ],
         temperature: 0.2,
         max_tokens: 500
