@@ -20,10 +20,9 @@ Rails.application.routes.draw do
     # The root `/` path is routed to `Public::HomeController#index` by default. You can set it
     # to whatever you want by doing something like this:
     # root to: "my_new_root_controller#index"
-    root to: "converter#index"
-    get  "/converter",          to: "converter#index"
-    post "/converter/generate", to: "converter#generate"
-    get  "/converter/result",   to: "converter#result"
+    root to: "tests#index"
+    get "/generated", to: "tests#show"
+    post "/generate_test_code", to: "tests#create"
   end
 
   namespace :webhooks do

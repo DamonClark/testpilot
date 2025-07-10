@@ -1,0 +1,21 @@
+<div class="max-w-2xl mx-auto p-6">
+  <h1 class="text-3xl font-bold mb-4">Plain English to Test Code Generator</h1>
+
+  <% if flash[:alert] %>
+    <div class="mb-4 text-red-600"><%= flash[:alert] %></div>
+  <% end %>
+
+  <%= form_with url: generate_test_code_path, method: :post, local: true do |form| %>
+    <div class="mb-4">
+      <%= form.label :scenario, "Paste your test scenario", class: "block font-medium mb-1" %>
+      <%= form.text_area :scenario, rows: 6, class: "w-full rounded border p-2" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :framework, "Select test framework", class: "block font-medium mb-1" %>
+      <%= form.select :framework, [["Cypress", "cypress"], ["Playwright", "playwright"], ["RSpec", "rspec"]], {}, class: "w-full rounded border p-2" %>
+    </div>
+
+    <%= form.submit "Generate Test Code", class: "bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" %>
+  <% end %>
+</div>

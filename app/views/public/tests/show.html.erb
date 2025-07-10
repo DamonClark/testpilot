@@ -1,0 +1,30 @@
+<div class="max-w-2xl mx-auto p-6">
+  <h1 class="text-3xl font-bold mb-4">Generated Test Code</h1>
+
+  <p class="mb-4"><strong>Scenario:</strong> <%= @scenario %></p>
+  <p class="mb-4"><strong>Framework:</strong> <%= @framework.capitalize %></p>
+
+  <div class="relative">
+    <pre class="bg-gray-100 p-4 rounded whitespace-pre-wrap"><%= @generated_code %></pre>
+
+    <!-- Hidden textarea to support clipboard copy -->
+    <textarea id="copy-target" class="hidden"><%= @generated_code %></textarea>
+
+    <button
+      onclick="copyGeneratedCode()"
+      class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded hover:bg-blue-600">
+      📋 Copy
+    </button>
+  </div>
+
+  <script>
+    function copyGeneratedCode() {
+      const textarea = document.getElementById("copy-target");
+      textarea.classList.remove("hidden");
+      textarea.select();
+      document.execCommand("copy");
+      textarea.classList.add("hidden");
+    }
+  </script>
+  <%= link_to "Generate Another", root_path, class: "mt-4 inline-block text-blue-600 hover:underline" %>
+</div>
